@@ -88,7 +88,7 @@ export default {
       this.v$.$validate(); // validations() للبيانات اللي في  validate معناها اعملي
       if (!this.v$.$error) {
         let result = await axios.get(
-          `http://localhost:3000/users?email=${this.email}&password=${this.password}`
+          `${import.meta.env.VITE_ROOT_API}/users?email=${this.email}&password=${this.password}`
         );
         //get 200
         if (result.status == 200 && result.data.length > 0) {

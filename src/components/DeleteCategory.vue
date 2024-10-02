@@ -61,10 +61,10 @@ export default {
       return store.state.category;
     },
     async deleteCate(id) {
-      let result = await axios.delete(`http://localhost:3000/categories/${id}`);
+      let result = await axios.delete(`${import.meta.env.VITE_ROOT_API}/categories/${id}`);
       // delete 200;
       if (result.status == 200) {
-        let res = await axios.get(`http://localhost:3000/items?catId=${id}`);
+        let res = await axios.get(`${import.meta.env.VITE_ROOT_API}/items?catId=${id}`);
         if (res.status == 200) {
           for (let index = 0; index < res.data.length; index++) {
             this.allItemsID.push(res.data[index].id);
@@ -73,7 +73,7 @@ export default {
 
         for (let index = 0; index < this.allItemsID.length; index++) {
           await axios.delete(
-            `http://localhost:3000/items/${this.allItemsID[index]}`
+            `${import.meta.env.VITE_ROOT_API}/items/${this.allItemsID[index]}`
           );
         }
       }

@@ -125,7 +125,7 @@ export default {
     },
     async deleteCard() {
       let result = await axios.get(
-        `http://localhost:3000/categories?locationID=${this.deletedID}`
+        `${import.meta.env.VITE_ROOT_API}/categories?locationID=${this.deletedID}`
       );
       if (result.status == 200) {
         for (let index = 0; index < result.data.length; index++) {
@@ -134,7 +134,7 @@ export default {
         console.log(this.catIdLength);
         for (let index = 0; index < this.catIdLength.length; index++) {
           let itemResults = await axios.get(
-            `http://localhost:3000/items?catId=${this.catIdLength[index]}`
+            `${import.meta.env.VITE_ROOT_API}/items?catId=${this.catIdLength[index]}`
           );
           this.itemsLength.push(itemResults.data);
         }
@@ -154,17 +154,17 @@ export default {
       }
 
       let resultLOC = await axios.delete(
-        `http://localhost:3000/Locations/${this.deletedID}`
+        `${import.meta.env.VITE_ROOT_API}/Locations/${this.deletedID}`
       );
       if (resultLOC.status == 200) {
         for (let index = 0; index < this.catIdLength.length; index++) {
           await axios.delete(
-            `http://localhost:3000/categories/${this.catIdLength[index]}`
+            `${import.meta.env.VITE_ROOT_API}/categories/${this.catIdLength[index]}`
           );
         }
         for (let index = 0; index < this.itemsIdLength.length; index++) {
           await axios.delete(
-            `http://localhost:3000/items/${this.itemsIdLength[index]}`
+            `${import.meta.env.VITE_ROOT_API}/items/${this.itemsIdLength[index]}`
           );
         }
       }

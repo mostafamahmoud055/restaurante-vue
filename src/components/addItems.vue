@@ -132,7 +132,7 @@ export default {
     async addItem(id) {
       this.v$.$validate();
       let result = await axios.get(
-        `http://localhost:3000/items?userId=${this.userID}&catId=${id}`
+        `${import.meta.env.VITE_ROOT_API}/items?userId=${this.userID}&catId=${id}`
       );
       //get 200
       if (result.status == 200 && result.data.length > 0) {
@@ -152,7 +152,7 @@ export default {
         return;
       }
       if (!this.v$.$error) {
-        let result = await axios.post(`http://localhost:3000/items`, {
+        let result = await axios.post(`${import.meta.env.VITE_ROOT_API}/items`, {
           name: this.itemName,
           price: this.itemPrice + " EGP",
           description: this.itemDesc,

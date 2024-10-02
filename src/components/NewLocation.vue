@@ -158,7 +158,7 @@ export default {
       ) {
         return;
       } else {
-        let result = await axios.post(`http://localhost:3000/Locations`, {
+        let result = await axios.post(`${import.meta.env.VITE_ROOT_API}/Locations`, {
           name: this.rName,
           address: this.rAddress,
           phone: this.rPhone,

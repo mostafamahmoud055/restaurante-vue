@@ -211,7 +211,7 @@ export default {
       this.v$.$validate(); // validations() للبيانات اللي في  validate معناها اعملي
       if (!this.v$.$error) {
         let result = await axios.put(
-          `http://localhost:3000/users/${this.userID}`,
+          `${import.meta.env.VITE_ROOT_API}/users/${this.userID}`,
           {
             name: this.name,
             email: this.email,

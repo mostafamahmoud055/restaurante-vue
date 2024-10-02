@@ -27,7 +27,7 @@ export default createStore({
     },
     async listOfLocations(state, payload) {
       let result = await axios.get(
-        `http://localhost:3000/Locations?userID=${payload.userID}`
+        `${import.meta.env.VITE_ROOT_API}/Locations?userID=${payload.userID}`
       );
       //get 200
       if (result.status == 200) {
@@ -38,7 +38,7 @@ export default createStore({
       state.itemsOfCategories = [];
       state.itemsOfCategoriesID = "";
       let result = await axios.get(
-        `http://localhost:3000/categories?userID=${payload.userID}&locationID=${payload.locationID}`
+        `${import.meta.env.VITE_ROOT_API}/categories?userID=${payload.userID}&locationID=${payload.locationID}`
       );
       //get 200
       if (result.status == 200) {
@@ -50,7 +50,7 @@ export default createStore({
         });
       }
       let res = await axios.get(
-        `http://localhost:3000/items?userID=${payload.userID}&locID=${payload.locationID}`
+        `${import.meta.env.VITE_ROOT_API}/items?userID=${payload.userID}&locID=${payload.locationID}`
       );
       //get 200
       if (res.status == 200 && res.data.length > 0) {
@@ -61,7 +61,7 @@ export default createStore({
     },
     async middlewareLocations(state, payload) {
       let result = await axios.get(
-        `http://localhost:3000/Locations?id=${payload.id}&userID=${payload.userID}`
+        `${import.meta.env.VITE_ROOT_API}/Locations?id=${payload.id}&userID=${payload.userID}`
       );
 
       //get 200

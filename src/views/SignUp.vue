@@ -68,7 +68,7 @@ export default {
     async signup() {
       this.v$.$validate(); // validations() للبيانات اللي في  validate معناها اعملي
       if (!this.v$.$error) {
-        let result = await axios.post("http://localhost:3000/users", {
+        let result = await axios.post("${import.meta.env.VITE_ROOT_API}/users", {
           name: this.name,
           email: this.email,
           password: this.password,

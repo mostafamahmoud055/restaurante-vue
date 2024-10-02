@@ -96,7 +96,7 @@ export default {
     }
     let userid = JSON.parse(user)[0]["id"];
     let result = await axios.get(
-      `http://localhost:3000/Locations?id=${this.$route.params.id}&userID=${userid}`
+      `${import.meta.env.VITE_ROOT_API}/Locations?id=${this.$route.params.id}&userID=${userid}`
     );
 
     //get 200
@@ -116,7 +116,7 @@ export default {
       let id = this.$route.params.id;
       this.v$.$validate(); // validations() للبيانات اللي في  validate معناها اعملي
       if (!this.v$.$error) {
-        let result = await axios.put(`http://localhost:3000/Locations/${id}`, {
+        let result = await axios.put(`${import.meta.env.VITE_ROOT_API}/Locations/${id}`, {
           name: this.name,
           address: this.address,
           phone: this.phone,

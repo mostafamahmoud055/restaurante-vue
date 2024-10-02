@@ -307,7 +307,7 @@ export default {
       userID: userid,
     });
     let result = await axios.get(
-      `http://localhost:3000/Locations?id=${this.$route.params.id}&userID=${userid}`
+      `${import.meta.env.VITE_ROOT_API}/Locations?id=${this.$route.params.id}&userID=${userid}`
     );
 
     //get 200
@@ -315,7 +315,7 @@ export default {
       this.locationName = result.data[0].name;
     }
     let categories = await axios.get(
-      `http://localhost:3000/categories?locationID=${this.$route.params.id}&userID=${userid}`
+      `${import.meta.env.VITE_ROOT_API}/categories?locationID=${this.$route.params.id}&userID=${userid}`
     );
 
     //get 200
@@ -402,7 +402,7 @@ export default {
         return;
       }
       let result = await axios.put(
-        `http://localhost:3000/categories/${this.uID}`,
+        `${import.meta.env.VITE_ROOT_API}/categories/${this.uID}`,
         {
           name: this.uName,
           photo: this.uSrcPhoto,
@@ -454,7 +454,7 @@ export default {
         }, 1500);
         return;
       }
-      let result = await axios.post(`http://localhost:3000/categories`, {
+      let result = await axios.post(`${import.meta.env.VITE_ROOT_API}/categories`, {
         name: this.name,
         userID: this.userID,
         locationID: this.locationID,
